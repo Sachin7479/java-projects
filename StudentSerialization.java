@@ -1,6 +1,5 @@
 import java.io.*;
 
-// Student class implementing Serializable
 class Student implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -20,12 +19,11 @@ class Student implements Serializable {
     }
 }
 
-// Main class to serialize and deserialize Student object
 public class StudentSerialization {
     public static void main(String[] args) {
         String filename = "student.ser";
 
-        // Serialization
+ 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             Student s1 = new Student(101, "Navya", "A+");
             oos.writeObject(s1);
@@ -34,7 +32,6 @@ public class StudentSerialization {
             e.printStackTrace();
         }
 
-        // Deserialization
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             Student s2 = (Student) ois.readObject();
             System.out.println("Student object has been deserialized: " + s2);
